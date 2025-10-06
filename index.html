@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Horizon Store — Home</title>
+<meta name="description" content="Horizon Store — marketplace & portfolio Horizon. RYZN Artist, Le Saint Voyage e tooling visionOS-style.">
+<style>
+:root {
+  --bg:#070b18;
+  --panel:rgba(255,255,255,0.04);
+  --glass:rgba(255,255,255,0.06);
+  --accent1:#8b6eff;
+  --accent2:#00d4ff;
+  --text:#f4f7ff;
+  --muted:#9aa7c2;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#020317,var(--bg));color:var(--text);scroll-behavior:smooth}
+a{color:inherit;text-decoration:none}
+
+/* NAVBAR */
+header{position:fixed;top:0;left:0;right:0;height:74px;display:flex;align-items:center;justify-content:center;background:rgba(10,12,30,.6);backdrop-filter:blur(14px);transition:.4s;z-index:50}
+header.hidden{transform:translateY(-120%);opacity:0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent1),var(--accent2));font-weight:800;font-size:22px;color:#041022;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(139,110,255,.1)}50%{box-shadow:0 0 40px rgba(139,110,255,.3)}}
+.logo h1{margin:0;font-size:20px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+main{max-width:1100px;margin:100px auto 60px;padding:0 18px;display:flex;flex-direction:column;gap:26px}
+
+/* HERO */
+.hero{border-radius:18px;overflow:hidden;background:var(--panel);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.slides{display:flex;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.slide{min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;padding:44px}
+.slide .title{font-size:28px;margin:6px 0;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.slide .desc{color:var(--muted)}
+.slide img{width:100%;max-width:480px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,20,.5)}
+.dots{display:flex;gap:8px;justify-content:center;margin:12px 0}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--muted);opacity:.5;cursor:pointer}
+.dot.active{background:var(--accent1);opacity:1}
+
+/* GRID */
+.section{background:var(--panel);border-radius:14px;padding:18px;backdrop-filter:blur(10px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:10px}
+.app{background:rgba(255,255,255,.02);border-radius:12px;padding:14px;text-align:center;transition:.2s;cursor:pointer}
+.app:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.app .icon{width:92px;height:92px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:auto}
+.app .title{font-weight:700;margin-top:10px}
+.app .meta{font-size:13px;color:var(--muted)}
+.app.coming .icon{border:1px dashed rgba(255,255,255,.08);color:var(--muted)}
+.app.active .icon{background:linear-gradient(135deg,var(--accent1),var(--accent2))}
+
+/* MODAL */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);z-index:200}
+.modal.open{display:flex}
+.modal-card{max-width:900px;width:95%;background:var(--panel);border-radius:16px;padding:22px;color:var(--text);overflow:auto;max-height:90vh;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.modal-card h2{margin-top:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.download-btn{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#041022;font-weight:800;border:none;cursor:pointer}
+.download-btn.soon{background:linear-gradient(90deg,#666,#999);cursor:default;color:#222}
+footer{margin-top:20px;padding:20px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:900px){.slide{grid-template-columns:1fr;text-align:center}}
+</style>
+</head>
+<body>
+<header id="topbar">
+  <div class="logo">
+    <div class="logo-mark">H</div>
+    <h1>Horizon Store</h1>
+  </div>
+</header>
+
+<main>
+
+<!-- SLIDES -->
+<section class="hero">
+  <div class="slides" id="slides">
+    <div class="slide">
+      <div>
+        <div class="title">Ryzn Music Group</div>
+        <div class="desc">Tool di analytics e promozione per artisti emergenti. Dashboard realtime e insight dettagliati.</div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80" alt="">
+    </div>
+    <div class="slide">
+      <div>
+        <div class="title">Horizon Tech</div>
+        <div class="desc">Infrastrutture e soluzioni software per creatori, imprese e sviluppatori Horizon.</div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1526378725448-3b7f1c8c3b9a?auto=format&fit=crop&w=1200&q=80" alt="">
+    </div>
+    <div class="slide">
+      <div>
+        <div class="title">Le Saint Voyage</div>
+        <div class="desc">Holy Family Tracker — un racconto interattivo della Natività. Viaggia da Nazareth a Betlemme.</div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1608590112700-8b5d77fce761?auto=format&fit=crop&w=1200&q=80" alt="">
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<!-- APP SECTION -->
+<section class="section">
+  <h2>Applicazioni in evidenza</h2>
+  <div class="grid">
+    <!-- RYZN ARTIST -->
+    <div class="app active" onclick="openRyzn()">
+      <div class="icon">
+        <!-- 🎧 SVG -->
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" fill="url(#grad1)" />
+          <path d="M20 32a12 12 0 0124 0v12a8 8 0 01-16 0v-6a4 4 0 118 0v4" stroke="#041022" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs><linearGradient id="grad1" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#8b6eff"/><stop offset="1" stop-color="#00d4ff"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="title">RYZN Artist</div>
+      <div class="meta">Pannello statistiche</div>
+    </div>
+
+    <!-- LE SAINT VOYAGE -->
+    <div class="app active" onclick="openSaint()">
+      <div class="icon">
+        <!-- ✨ SVG -->
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <rect x="2" y="2" width="60" height="60" rx="12" fill="url(#gold)" />
+          <path d="M32 14l6 12h12l-9 8 3 14-12-8-12 8 3-14-9-8h12l6-12z" fill="#fff8d0" opacity=".9"/>
+          <defs><linearGradient id="gold" x1="0" y1="0" x2="64" y2="64"><stop stop-color="#ffd98a"/><stop offset="1" stop-color="#f6c358"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="title">Le Saint Voyage</div>
+      <div class="meta">Holy Family Tracker</div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="app coming"><div class="icon">🕓</div><div class="title">Studio Suite</div><div class="meta">Coming Soon</div></div>
+    <div class="app coming"><div class="icon">🕓</div><div class="title">Vision Tools</div><div class="meta">Coming Soon</div></div>
+  </div>
+</section>
+
+</main>
+
+<!-- MODAL RYZN -->
+<div class="modal" id="modalRyzn">
+  <div class="modal-card">
+    <h2>RYZN Artist</h2>
+    <p>Pannello dedicato agli artisti indipendenti per monitorare ascolti, guadagni e trend in tempo reale.</p>
+    <ul>
+      <li>Compatibilità: Android 10+</li>
+      <li>Dimensione app: ~7 MB</li>
+      <li>Versione: 0.9 Beta</li>
+    </ul>
+    <p><button class="download-btn" onclick="window.open('https://old.appsgeyser.com/building/?type=apk&widget_name=Ryzn%20Artist%20IT_19167377&_gl=1*1mc9uys*_ga*MTMwMzM0ODgwMi4xNzU5NDE4Mjc5*_ga_WRFFFBGC4Z*czE3NTk2OTQwMjgkbzIkZzEkdDE3NTk2OTQ3MDckajYkbDAkaDAkZFUzdkw5VlFiWTZ2VERObXJyM19ua0RzaWJIOVg0S09zaGc.','_blank')">Download Android</button></p>
+    <button class="download-btn soon" onclick="closeRyzn()">Chiudi</button>
+    
+<p><button class="download-btn" onclick="window.open('https://ryznmusic.it.','_blank')">Download Ios</button></p>
+    <button class="download-btn soon" onclick="closeRyzn()">Chiudi</button>
+    
+  </div>
+</div>
+
+<!-- MODAL SAINT -->
+<div class="modal" id="modalSaint">
+  <div class="modal-card">
+    <h2>Le Saint Voyage — Holy Family Tracker</h2>
+    <p>App spirituale interattiva che racconta il viaggio di Maria e Giuseppe verso Betlemme. Mappe, riflessioni e contenuti narrativi speciali per l’Avvento.</p>
+    <ul>
+      <li>Compatibilità: Android / iOS (in sviluppo)</li>
+      <li>Dimensione stimata: 50 MB</li>
+      <li>Stato: Coming Soon</li>
+    </ul>
+    <p><button class="download-btn soon">Coming Soon</button></p>
+    <button class="download-btn soon" onclick="closeSaint()">Chiudi</button>
+  </div>
+</div>
+
+<footer>© 2025 Horizon Interactive — Demo UI visionOS style</footer>
+
+<script>
+/* Navbar hide on scroll */
+let lastY=0;const topbar=document.getElementById('topbar');
+window.addEventListener('scroll',()=>{let y=window.scrollY;if(y>lastY&&y>100)topbar.classList.add('hidden');else topbar.classList.remove('hidden');lastY=y;});
+
+/* Slides autoplay */
+const slides=document.getElementById('slides');
+const dots=document.getElementById('dots');
+let idx=0;
+const total=slides.children.length;
+for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot';d.onclick=()=>{idx=i;update();};dots.appendChild(d);}
+function update(){slides.style.transform=`translateX(-${idx*100}%)`;dots.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));}
+update();setInterval(()=>{idx=(idx+1)%total;update();},7000);
+
+/* Modals */
+const modalRyzn=document.getElementById('modalRyzn');
+const modalSaint=document.getElementById('modalSaint');
+function openRyzn(){modalRyzn.classList.add('open');}
+function closeRyzn(){modalRyzn.classList.remove('open');}
+function openSaint(){modalSaint.classList.add('open');}
+function closeSaint(){modalSaint.classList.remove('open');}
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeRyzn();closeSaint();}});
+</script>
+</body>
+</html>

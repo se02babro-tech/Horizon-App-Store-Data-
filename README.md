@@ -1,2 +1,3 @@
-# Horizon-App-Store-Data-
-The beck-end source of Horizon app Store 
+# Aura, Beyond the Sound-
+Power By Rynz Music Group 
+Ryzn Music Group is a HorizonGlobal Divison
